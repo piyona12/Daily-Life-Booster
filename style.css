@@ -176,7 +176,17 @@ select:focus, input:focus, textarea:focus {
     line-height: 1.6;
 }
 
-/* CHALLENGE BOX & SUPPORT BOX */
+/* CHARACTER BOX, CHALLENGE BOX & SUPPORT BOX */
+.character-box {
+    background: #ffffff;
+    border: 3px solid #013e37;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 18px;
+    box-shadow: 4px 4px 0px #013e37;
+}
+
 .challenge-box {
     background: #ffffff;
     border: 3px dashed #013e37;
@@ -184,7 +194,7 @@ select:focus, input:focus, textarea:focus {
     padding: 22px;
     text-align: center;
     margin-bottom: 18px;
-    min-height: 100px;
+    min-height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -202,12 +212,14 @@ select:focus, input:focus, textarea:focus {
     border: 3px solid #013e37;
     border-radius: 12px;
     padding: 14px;
+    box-shadow: 3px 3px 0px #013e37;
 }
 
 .support-box h4 {
     color: #013e37;
     font-size: 14px;
     margin-bottom: 4px;
+    font-weight: 900;
 }
 
 .support-box p {
@@ -225,6 +237,7 @@ select:focus, input:focus, textarea:focus {
     padding: 10px 14px;
     margin-bottom: 8px;
     font-size: 13px;
+    box-shadow: 2px 2px 0px #013e37;
 }
 
 .journal-item strong {
@@ -272,6 +285,15 @@ button {
     border: 3px solid #013e37;
     margin-top: 12px;
     box-shadow: 4px 4px 0px #013e37;
+}
+
+button:disabled {
+    background: #8aa7a1;
+    color: #e0e0e0;
+    border-color: #013e37;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
 
 /* ANIMASI SPINNING */
