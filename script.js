@@ -1,18 +1,18 @@
 // URL GOOGLE APPS SCRIPT
 const SPREADSHEET_URL = "https://script.google.com/macros/s/AKfycbwOvP_AuPkJE2Eh2IV6Q7YnsusuPjKkLYxto11nCmg8GOuOR39Fpg99LhWA6MWAiswT1Q/exec";
 
-// DATA MENU LENGKAP
+// DATA MENU LENGKAP (TETAP SAMA / UTUH)
 const daftarMenuLengkap = [
     // --- MINUMAN PENDAMPING MAKAN (NETRAL) 🥤 ---
-    { nama: "Es Teh Manis Plastikan 🥤", harga: 3000, tipe: "minuman", rasa: "manis", kategori: "netral" },
+    { nama: "Es Teh Manis Plantikan 🥤", harga: 3000, tipe: "minuman", rasa: "manis", kategori: "netral" },
     { nama: "Es Nutrisari 🧃", harga: 4000, tipe: "minuman", rasa: "manis", kategori: "netral" },
-    { nama: "Pop Ice 🧃", harga: 5000, tipe: "minuman", rasa: "manis", kategori: "netral" },
     { nama: "Es Jeruk Peras Segar 🍹", harga: 5000, tipe: "minuman", rasa: "manis", kategori: "netral" },
     { nama: "Es Kopi 5000-an 🍵", harga: 5000, tipe: "minuman", rasa: "manis", kategori: "netral" },
     { nama: "Air Mineral Dingin 💧", harga: 4000, tipe: "minuman", rasa: "segar", kategori: "netral" },
-
+    { nama: "Es Kelapa Muda Gula Merah 🥥", harga: 5000, tipe: "minuman", rasa: "manis", kategori: "netral" },
+    
     // --- MINUMAN BERTEKSTUR / TOPPING 🍧 ---
-    { nama: "Es Kelapa Muda Gula Merah 🥥", harga: 5000, tipe: "minuman", rasa: "manis", kategori: "topping" },
+    { nama: "Pop Ice 🧃", harga: 5000, tipe: "minuman", rasa: "manis", kategori: "topping" },
     { nama: "Es Doger / Es Teler Mangkuk 🍧", harga: 5000, tipe: "minuman", rasa: "manis", kategori: "topping" },
     { nama: "Boba Milk Tea / Thai Tea 🧋", harga: 10000, tipe: "minuman", rasa: "manis", kategori: "topping" },
     { nama: "Es Alpukat Kocok Melt 🥑", harga: 12000, tipe: "minuman", rasa: "manis", kategori: "topping" },
@@ -23,6 +23,9 @@ const daftarMenuLengkap = [
     { nama: "Pisang Cokelat Lumer (Piscok) 🍌", harga: 8000, tipe: "makanan", rasa: "manis", kategori: "ringan" },
     { nama: "Roti Bakar Bandung 🍞", harga: 15000, tipe: "makanan", rasa: "manis", kategori: "ringan" },
     { nama: "Martabak Manis Cokelat Keju 🧀", harga: 55000, tipe: "makanan", rasa: "manis", kategori: "berat" },
+    { nama: "Jagung Susu Keju 🧀", harga: 5000, tipe: "makanan", rasa: "manis", kategori: "ringan" },
+    { nama: "Donat gula 🧀", harga: 3000, tipe: "makanan", rasa: "manis", kategori: "ringan" },
+    { nama: "Martabak mini 🧀", harga: 5000, tipe: "makanan", rasa: "manis", kategori: "ringan" },
 
     // --- MAKANAN PEDAS 🔥 ---
     { nama: "Ayam Geprek 🍗", harga: 10000, tipe: "makanan", rasa: "pedas", kategori: "berat" },
@@ -37,6 +40,11 @@ const daftarMenuLengkap = [
     { nama: "Richeese Fire Chicken Combo 🍗", harga: 45000, tipe: "makanan", rasa: "pedas", kategori: "berat" },
 
     // --- MAKANAN ASIN & GURIH 🧀 ---
+    { nama: "Ketoprak", harga: 10000, tipe: "makanan", rasa: "asin", kategori: "ringan" },
+    { nama: "Bubur Ayam 🍛", harga: 7000, tipe: "makanan", rasa: "asin", kategori: "berat" },
+    { nama: "Cireng isi", harga: 5000, tipe: "makanan", rasa: "asin", kategori: "ringan" },
+    { nama: "Risol", harga: 5000, tipe: "makanan", rasa: "asin", kategori: "ringan" },
+    { nama: "Gorengan tahu tempe cireng", harga: 5000, tipe: "makanan", rasa: "asin", kategori: "ringan" },
     { nama: "Indomie Goreng 🍜", harga: 5000, tipe: "makanan", rasa: "asin", kategori: "ringan" },
     { nama: "Cimol Balado 🧆", harga: 5000, tipe: "makanan", rasa: "asin", kategori: "ringan" },
     { nama: "Cilok 🧆", harga: 5000, tipe: "makanan", rasa: "asin", kategori: "ringan" },
@@ -96,11 +104,12 @@ const pesanSupport = [
     "Setiap hari adalah kesempatan baru untuk bersinar. Keep it up! 💪"
 ];
 
-let streakCount = 0;
-let tantanganAktif = false;
+// STATE LOKAL
+let streakCount = parseInt(localStorage.getItem("user_streak")) || 0;
+let lastChallengeDate = localStorage.getItem("last_challenge_date") || "";
 let riwayatJurnal = JSON.parse(localStorage.getItem("riwayat_jurnal")) || [];
 
-// FUNGSI LOGIKA REKOMENDASI SMART
+// FUNGSI LOGIKA REKOMENDASI SMART (TETAP SAMA / UTUH)
 function cariRekomendasiSmart(pilihanTipe, pilihanKategori, pilihanKategoriMinuman, pilihanRasa, budgetInput) {
     function filterMenu(tipeItem) {
         return daftarMenuLengkap.filter(item => {
@@ -216,7 +225,7 @@ function cariRekomendasiSmart(pilihanTipe, pilihanKategori, pilihanKategoriMinum
     }
 }
 
-// FUNGSI SPINNER
+// FUNGSI SPINNER (TETAP SAMA / UTUH)
 function putarDanCari() {
     const pilihanTipe = document.getElementById("pilih-tipe").value;
     const pilihanKategori = document.getElementById("pilih-kategori") ? document.getElementById("pilih-kategori").value : "semua";
@@ -248,7 +257,7 @@ function putarDanCari() {
     }, 1200);
 }
 
-// TOGGLE DROPDOWN KATEGORI
+// TOGGLE DROPDOWN KATEGORI (TETAP SAMA / UTUH)
 function sesuaikanDropdown() {
     const tipe = document.getElementById("pilih-tipe").value;
     const groupKategoriMakanan = document.getElementById("group-kategori-makanan");
@@ -266,78 +275,144 @@ function sesuaikanDropdown() {
     }
 }
 
-// FUNGSI TANTANGAN HARIAN & JURNAL
-function bukaTantangan() {
-    if (tantanganAktif) {
-        alert("Selesaikan dulu tantangan yang ada sekarang ya!");
-        return;
-    }
+// =========================================================
+// UPDATE FITUR KARAKTER & STREAK SYSTEM
+// =========================================================
+function updateKarakterUI() {
+    const streakElem = document.getElementById("streak-count");
+    if (streakElem) streakElem.innerText = streakCount;
 
+    const avatar = document.getElementById("character-avatar");
+    const title = document.getElementById("character-title");
+    const desc = document.getElementById("character-desc");
+
+    if (!avatar) return;
+
+    if (streakCount === 0) {
+        avatar.innerText = "🌱";
+        title.innerText = "TUNAS BARU";
+        desc.innerText = "Selesaikan challenge pertamamu untuk mulai tumbuh!";
+    } else if (streakCount >= 1 && streakCount <= 2) {
+        avatar.innerText = "🌿";
+        title.innerText = "TANAMAN MUDA";
+        desc.innerText = "Karaktermu makin kuat & subur!";
+    } else if (streakCount >= 3 && streakCount <= 5) {
+        avatar.innerText = "🌳";
+        title.innerText = "POHON RINDANG";
+        desc.innerText = "Semangatmu konsisten setiap hari!";
+    } else if (streakCount >= 6 && streakCount <= 9) {
+        avatar.innerText = "🌸🌳";
+        title.innerText = "POHON BERBUNGA AJAIB";
+        desc.innerText = "Luar biasa! Karaktermu tumbuh indah sekali!";
+    } else {
+        avatar.innerText = "👑🌳✨";
+        title.innerText = "SUPER MASTER TREE";
+        desc.innerText = "Streak Legendaris! Kamu sangat disiplin!";
+    }
+}
+
+// UPDATE STATUS TANTANGAN HARIAN
+function cekStatusTantanganHarian() {
+    const today = new Date().toLocaleDateString('id-ID');
+    const btnChallenge = document.getElementById("btn-challenge");
+    const btnComplete = document.getElementById("btn-complete");
+    const challengeText = document.getElementById("challenge-text");
+
+    if (lastChallengeDate === today) {
+        if (btnChallenge) btnChallenge.style.display = "none";
+        if (btnComplete) {
+            btnComplete.style.display = "block";
+            btnComplete.disabled = true;
+            btnComplete.innerText = "🎉 Challenge Hari Ini Sudah Selesai!";
+        }
+        if (challengeText) challengeText.innerText = "Kamu sudah menyelesaikan tantangan hari ini. Datang lagi besok ya!";
+    }
+}
+
+function bukaTantangan() {
     const indexTantangan = Math.floor(Math.random() * daftarTantangan.length);
     document.getElementById("challenge-text").innerText = daftarTantangan[indexTantangan];
     document.getElementById("btn-challenge").style.display = "none";
-    document.getElementById("journal-box").style.display = "block";
     document.getElementById("btn-complete").style.display = "block";
-    document.getElementById("support-message-box").style.display = "none";
-    tantanganAktif = true;
 }
 
 function selesaikanTantangan() {
-    const isiJurnal = document.getElementById("input-journal").value;
-
-    if (!isiJurnal.trim()) {
-        alert("Isi jurnal singkatmu dulu sebelum klaim streak ya!");
-        return;
-    }
+    const today = new Date().toLocaleDateString('id-ID');
 
     streakCount += 1;
-    document.getElementById("streak-count").innerText = streakCount;
+    lastChallengeDate = today;
 
-    const dataBaru = {
-        tanggal: new Date().toLocaleDateString('id-ID'),
-        tantangan: document.getElementById("challenge-text").innerText,
-        jurnal: isiJurnal
-    };
+    localStorage.setItem("user_streak", streakCount);
+    localStorage.setItem("last_challenge_date", today);
 
-    // SIMPAN KE RIWAYAT LOCAL
-    riwayatJurnal.unshift(dataBaru);
-    localStorage.setItem("riwayat_jurnal", JSON.stringify(riwayatJurnal));
-    tampilkanRiwayatJurnal();
+    updateKarakterUI();
+    cekStatusTantanganHarian();
 
-    // KIRIM KE GOOGLE SHEETS
-    if (SPREADSHEET_URL !== "URL_WEB_APP_GOOGLE_SCRIPT_KAMU_DI_SINI") {
+    // KIRIM KE GOOGLE SHEETS LOG CHALLENGE
+    if (SPREADSHEET_URL && !SPREADSHEET_URL.includes("URL_WEB_APP")) {
         fetch(SPREADSHEET_URL, {
             method: "POST",
             mode: "no-cors",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...dataBaru, totalStreak: streakCount })
+            body: JSON.stringify({
+                fitur: "Daily Challenge",
+                hasilKeputusan: `Selesai Challenge (Streak: ${streakCount} Hari)`,
+                totalStreak: streakCount
+            })
         });
     }
 
-    // PESAN MOTIVASI & SUPPORT
+    alert("🎉 Selamat! Challenge harian selesai & karaktermu makin berkembang! 🌱✨");
+}
+
+// =========================================================
+// UPDATE FITUR JURNAL (TERPISAH TOTAL DARI CHALLENGE)
+// =========================================================
+function simpanJurnal() {
+    const isiJurnal = document.getElementById("input-journal").value;
+
+    if (!isiJurnal.trim()) {
+        alert("Tuliskan sesuatu di jurnalmu terlebih dahulu!");
+        return;
+    }
+
+    const dataBaru = {
+        tanggal: new Date().toLocaleDateString('id-ID'),
+        tantangan: "Catatan Jurnal Mandiri",
+        jurnal: isiJurnal
+    };
+    // SIMPAN KE LOCAL STORAGE
+    riwayatJurnal.unshift(dataBaru);
+    localStorage.setItem("riwayat_jurnal", JSON.stringify(riwayatJurnal));
+    tampilkanRiwayatJurnal();
+    // KIRIM KE GOOGLE SHEETS LOG JURNAL
+    if (SPREADSHEET_URL && !SPREADSHEET_URL.includes("URL_WEB_APP")) {
+        fetch(SPREADSHEET_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                fitur: "Daily Journal",
+                hasilKeputusan: isiJurnal,
+                tanggal: dataBaru.tanggal
+            })
+        });
+    }
+
+    // TAMPILKAN PESAN MOTIVASI
     const randomSupport = pesanSupport[Math.floor(Math.random() * pesanSupport.length)];
     document.getElementById("support-text").innerText = randomSupport;
     document.getElementById("support-message-box").style.display = "block";
 
-    // STATUS HADIAH
-    if (streakCount >= 3) {
-        document.getElementById("reward-status").innerText = "🎉 SELAMAT! Kamu Membuka Voucher Diskon Jajan 10% (KODE PROMO: BOOSTER10)";
-    }
-
-    alert("🎉 Selamat! Jurnal tersimpan & data berhasil dikirim!");
-
-    document.getElementById("challenge-text").innerText = "Tantangan hari ini selesai! Datang lagi besok. ✨";
-    document.getElementById("btn-complete").style.display = "none";
-    document.getElementById("journal-box").style.display = "none";
+    alert("📝 Catatan Jurnal Berhasil Disimpan!");
     document.getElementById("input-journal").value = "";
-    document.getElementById("btn-challenge").style.display = "block";
-    document.getElementById("btn-challenge").innerText = "✨ Ambil Tantangan Lagi";
-    tantanganAktif = false;
 }
 
-// FUNGSI KELOLA RIWAYAT JURNAL
+// KELOLA RIWAYAT JURNAL
 function tampilkanRiwayatJurnal() {
     const journalList = document.getElementById("journal-list");
+    if (!journalList) return;
+
     journalList.innerHTML = "";
 
     if (riwayatJurnal.length === 0) {
@@ -349,7 +424,6 @@ function tampilkanRiwayatJurnal() {
         const div = document.createElement("div");
         div.className = "journal-item";
         div.innerHTML = `<strong>📅 ${item.tanggal}</strong><br>` +
-                        `<span>🎯 <em>${item.tantangan}</em></span><br>` +
                         `<span>💬 "${item.jurnal}"</span>`;
         journalList.appendChild(div);
     });
@@ -359,7 +433,7 @@ function toggleRiwayatJurnal() {
     const journalList = document.getElementById("journal-list");
     const btn = document.getElementById("btn-toggle-journal");
 
-    if (journalList.style.display === "none") {
+    if (journalList.style.display === "none" || !journalList.style.display) {
         journalList.style.display = "block";
         btn.innerText = "🔼 Sembunyikan Riwayat Jurnal";
     } else {
@@ -370,16 +444,19 @@ function toggleRiwayatJurnal() {
 
 // EVENT LISTENERS
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("btn-spin").addEventListener("click", putarDanCari);
+    document.getElementById("btn-spin")?.addEventListener("click", putarDanCari);
     
     const elemTipe = document.getElementById("pilih-tipe");
     if (elemTipe) {
         elemTipe.addEventListener("change", sesuaikanDropdown);
     }
 
-    document.getElementById("btn-challenge").addEventListener("click", bukaTantangan);
-    document.getElementById("btn-complete").addEventListener("click", selesaikanTantangan);
-    document.getElementById("btn-toggle-journal").addEventListener("click", toggleRiwayatJurnal);
+    document.getElementById("btn-challenge")?.addEventListener("click", bukaTantangan);
+    document.getElementById("btn-complete")?.addEventListener("click", selesaikanTantangan);
+    document.getElementById("btn-save-journal")?.addEventListener("click", simpanJurnal);
+    document.getElementById("btn-toggle-journal")?.addEventListener("click", toggleRiwayatJurnal);
 
+    updateKarakterUI();
+    cekStatusTantanganHarian();
     tampilkanRiwayatJurnal();
 });
