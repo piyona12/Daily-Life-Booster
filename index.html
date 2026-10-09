@@ -21,7 +21,7 @@
 
     <div class="main-container">
         
-        <!-- FITUR 1: REKOMENDASI KULINER & WHEEL OF DECISION -->
+        <!-- FITUR 1: REKOMENDASI KULINER & WHEEL OF DECISION (UTUH / TIDAK DIUBAH) -->
         <section class="card spinner-card">
             <h2>🎯 Wheel of Decision & Smart Food</h2>
             <p class="subtitle">Pilih dulu keinginan kamu di bawah ini ya!</p>
@@ -30,9 +30,9 @@
             <div class="form-group">
                 <label for="pilih-tipe">🍽️ Mau Pesan Apa?</label>
                 <select id="pilih-tipe">
-                    <option value="kombo">🍱🥤 Paket Kombo (Makanan + Minuman)</option>
+                    <option value="kombo">🍱🥤 Paket Kombo</option>
                     <option value="makanan">🍱 Hanya Makanan</option>
-                    <option value="minuman">🥤 Hanya Minuman / Es-Esan</option>
+                    <option value="minuman">🥤 Hanya Minuman</option>
                 </select>
             </div>
 
@@ -40,19 +40,19 @@
             <div class="form-group" id="group-kategori-makanan">
                 <label for="pilih-kategori">🍲 Jenis Makanan:</label>
                 <select id="pilih-kategori">
-                    <option value="semua">🌈 Bebas (Makan Berat / Ringan)</option>
-                    <option value="berat">🍛 Makan Berat (Nasi/Ayam/Mie/Daging)</option>
-                    <option value="ringan">🍟 Camilan / Makan Ringan (Jajanan/Piscok/Batagor)</option>
+                    <option value="semua">🌈 Bebas</option>
+                    <option value="berat">🍛 Makan Berat</option>
+                    <option value="ringan">🍟 Camilan</option>
                 </select>
             </div>
 
             <!-- DROPDOWN JENIS MINUMAN -->
             <div class="form-group" id="group-kategori-minuman">
-                <label for="pilih-kategori-minuman">🥤 Jenis Minuman / Es:</label>
+                <label for="pilih-kategori-minuman">🥤 Jenis Minuman:</label>
                 <select id="pilih-kategori-minuman">
-                    <option value="semua">🌈 Bebas (Semua Jenis Es & Minuman)</option>
-                    <option value="netral">🥤 Pendamping Makan (Es Teh, Jeruk, Teh Jus, Air Mineral)</option>
-                    <option value="topping">🍧 Minuman Bertekstur / Ada Isi (Es Kuwut, Boba, Alpukat Kocok, Es Doger)</option>
+                    <option value="semua">🌈 Bebas</option>
+                    <option value="netral">🥤 Pendamping Makan</option>
+                    <option value="topping">🍧 Minuman Bertekstur / Ada Isi </option>
                 </select>
             </div>
 
@@ -86,42 +86,48 @@
             </div>
         </section>
 
-        <!-- FITUR 2: MYSTERY DAILY CHALLENGE & SUPPORT JOURNAL -->
+        <!-- FITUR 2: MYSTERY DAILY CHALLENGE & GROWTH CHARACTER -->
         <section class="card challenge-card">
-            <h2>🎁 Mystery Challenge & Daily Journal</h2>
-            <p class="subtitle">Ambil tantangan harian, tulis jurnal singkat, dan kumpulkan poin hadiah!</p>
+            <h2>🎁 Mystery Challenge & Growth Character</h2>
+            <p class="subtitle">Ambil tantangan harian untuk menumbuhkan karaktermu dan menambah streak!</p>
             
+            <!-- KOTAK VISUAL KARAKTER TUMBUH -->
+            <div class="character-box" style="background: #ffffff; border: 3px solid #013e37; border-radius: 16px; padding: 16px; text-align: center; margin-bottom: 18px;">
+                <div id="character-avatar" style="font-size: 50px; margin-bottom: 6px;">🌱</div>
+                <h3 id="character-title" style="color: #013e37; font-size: 15px; font-weight: 900; text-transform: uppercase;">TUNAS BARU</h3>
+                <p id="character-desc" style="font-size: 12px; color: #013e37; font-weight: 700; opacity: 0.85;">Selesaikan challenge hari ini untuk membuat karaktermu tumbuh!</p>
+            </div>
+
             <div class="challenge-box">
                 <div class="card-inner">
                     <p id="challenge-text">Klik tombol di bawah untuk membuka tantangan misteri hari ini!</p>
                 </div>
             </div>
 
-            <!-- FORM MINI DAILY JOURNAL -->
-            <div id="journal-box" style="display: none;" class="form-group">
-                <label for="input-journal">📝 Daily Journal & Curhatan Hari Ini:</label>
-                <textarea id="input-journal" rows="3" placeholder="Ceritakan singkat kegiatan, perasaan, atau pencapaian kecilmu hari ini..."></textarea>
-            </div>
-
             <button type="button" id="btn-challenge" class="btn-success">✨ Buka Tantangan Hari Ini</button>
-            <button type="button" id="btn-complete" class="btn-complete" style="display: none;">✅ Simpan Jurnal & Dapatkan Support Boost (+1 Streak)</button>
+            <button type="button" id="btn-complete" class="btn-complete" style="display: none;">✅ Selesaikan Challenge (+1 Streak)</button>
 
-            <!-- PESAN MOTIVASI / SUPPORT BOOST (TAMPIL SETELAH SIMPAN) -->
-            <div id="support-message-box" class="support-box" style="display: none;">
-                <h4>💌 Support Boost Buat Kamu:</h4>
-                <p id="support-text"></p>
+            <!-- FITUR 3: DAILY JOURNAL (TERPISAH TOTAL DARI CHALLENGE) -->
+            <div class="journal-section" style="margin-top: 24px; border-top: 3px dashed #013e37; padding-top: 18px;">
+                <h2 style="font-size: 18px; margin-bottom: 4px;">📝 Daily Journal</h2>
+                <p class="subtitle" style="margin-bottom: 14px;">Bisa ditulis dan disimpan kapan saja tanpa harus nunggu challenge!</p>
+
+                <div class="form-group">
+                    <textarea id="input-journal" rows="3" placeholder="Ceritakan singkat kegiatan, perasaan, atau pencapaian kecilmu hari ini..."></textarea>
+                </div>
+                <button type="button" id="btn-save-journal" class="btn-primary">💾 Simpan Jurnal</button>
+
+                <!-- PESAN MOTIVASI / SUPPORT BOOST -->
+                <div id="support-message-box" class="support-box" style="display: none; margin-top: 14px;">
+                    <h4>💌 Support Boost Buat Kamu:</h4>
+                    <p id="support-text"></p>
+                </div>
             </div>
 
             <!-- KOTAK RIWAYAT JURNAL -->
             <div class="journal-history-section" style="margin-top: 20px; border-top: 2px dashed #013e37; padding-top: 15px;">
                 <button type="button" id="btn-toggle-journal" class="btn-secondary">📖 Lihat Riwayat Jurnal Saya</button>
                 <div id="journal-list" style="display: none; margin-top: 12px;"></div>
-            </div>
-
-            <!-- KOTAK HADIAH / REWARD SHOP -->
-            <div class="reward-box" style="margin-top: 15px; border-top: 2px dashed #013e37; padding-top: 15px;">
-                <h3 style="color: #013e37; font-size: 15px; margin-bottom: 6px;">🏆 Status Hadiah Kamu:</h3>
-                <p id="reward-status" style="font-size: 13px; font-weight: bold; color: #013e37;">Butuh 3 Streak untuk Klaim Voucher Jajan 🎟️</p>
             </div>
         </section>
 
