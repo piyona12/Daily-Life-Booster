@@ -1,0 +1,285 @@
+/* =========================================================
+   🧈 BUTTER YELLOW & DEEP GREEN AESTHETIC THEME 🌲
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', 'Quicksand', 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #013e37;
+    color: #013e37;
+    padding-bottom: 60px;
+}
+
+/* NAVBAR BANNER KUNING BUTTER */
+.navbar {
+    background: #ffefb3;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #00221e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 24px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: #013e37;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.streak-badge {
+    background: #013e37;
+    color: #ffefb3;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 800;
+    border: 2px solid #013e37;
+}
+
+/* WELCOME BANNER */
+.welcome-banner {
+    max-width: 950px;
+    margin: 0 auto 24px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.welcome-banner h1 {
+    font-size: 24px;
+    color: #ffefb3;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+
+.welcome-banner p {
+    font-size: 14px;
+    color: #d1e7dd;
+    font-weight: 600;
+}
+
+/* CONTAINER UTAMA */
+.main-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* KARTU KUNING BUTTER (#ffefb3) */
+.card {
+    background: #ffefb3;
+    border-radius: 20px;
+    padding: 26px;
+    border: 3px solid #00221e;
+    box-shadow: 6px 6px 0px #00221e;
+}
+
+h2 {
+    color: #013e37;
+    font-size: 22px;
+    margin-bottom: 4px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #013e37;
+    margin-bottom: 20px;
+    font-weight: 700;
+    opacity: 0.85;
+}
+
+/* FORM INPUT STYLES */
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    color: #013e37;
+    text-transform: uppercase;
+}
+
+select, input, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 3px solid #013e37;
+    background: #ffffff;
+    color: #013e37;
+    font-size: 14px;
+    font-weight: 800;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+select:focus, input:focus, textarea:focus {
+    border-color: #013e37;
+    box-shadow: 0 0 0 3px rgba(1, 62, 55, 0.25);
+}
+
+/* WHEEL DISPLAY BOX HIJAU PEKAT (#013e37) */
+.wheel-box {
+    height: 100px;
+    background: #013e37;
+    border: 3px solid #00221e;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+    box-shadow: 4px 4px 0px #00221e;
+    transition: transform 0.2s;
+}
+
+.wheel-text {
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffefb3;
+    text-align: center;
+    padding: 10px;
+}
+
+/* HASIL CONTAINER */
+.hasil-container {
+    margin-top: 18px;
+    background-color: #ffffff;
+    border: 3px solid #013e37;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 4px 4px 0px #013e37;
+}
+
+.hasil-text-formatted {
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 14px;
+    color: #013e37;
+    font-weight: 800;
+    line-height: 1.6;
+}
+
+/* CHALLENGE BOX & SUPPORT BOX */
+.challenge-box {
+    background: #ffffff;
+    border: 3px dashed #013e37;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+    margin-bottom: 18px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#challenge-text {
+    font-size: 14px;
+    color: #013e37;
+    font-weight: 800;
+}
+
+.support-box {
+    margin-top: 15px;
+    background: #ffffff;
+    border: 3px solid #013e37;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.support-box h4 {
+    color: #013e37;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.support-box p {
+    font-size: 13px;
+    color: #013e37;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* ITEM RIWAYAT JURNAL */
+.journal-item {
+    background: #ffffff;
+    border: 2px solid #013e37;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.journal-item strong {
+    color: #013e37;
+}
+
+/* BUTTONS */
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary, .btn-success {
+    background: #013e37;
+    color: #ffefb3;
+    border: 3px solid #00221e;
+    box-shadow: 4px 4px 0px #00221e;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    background: #025249;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #00221e;
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #013e37;
+    border: 2px solid #013e37;
+    font-size: 13px;
+    padding: 8px;
+    box-shadow: 2px 2px 0px #013e37;
+}
+
+.btn-complete {
+    background: #00221e;
+    color: #ffefb3;
+    border: 3px solid #013e37;
+    margin-top: 12px;
+    box-shadow: 4px 4px 0px #013e37;
+}
+
+/* ANIMASI SPINNING */
+.spinning {
+    animation: bounceAnim 0.12s infinite ease-in-out;
+}
+
+@keyframes bounceAnim {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-4px); }
+}

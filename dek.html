@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Daily Life Booster - Smart Food & Journal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">⚡ Daily Life Booster</div>
+        <div class="streak-badge">🔥 Streak: <strong id="streak-count">0</strong> Hari</div>
+    </header>
+
+    <!-- WELCOME BANNER RAMAH & CERAH -->
+    <div class="welcome-banner">
+        <h1>✨ Halo! Selamat Datang, Silakan Masuk! 👋</h1>
+        <p>Bingung mau makan apa atau butuh tantangan seru hari ini? Yuk, biarin sistem yang pilihkan buat kamu!</p>
+    </div>
+
+    <div class="main-container">
+        
+        <!-- FITUR 1: REKOMENDASI KULINER & WHEEL OF DECISION -->
+        <section class="card spinner-card">
+            <h2>🎯 Wheel of Decision & Smart Food</h2>
+            <p class="subtitle">Pilih dulu keinginan kamu di bawah ini ya!</p>
+            
+            <!-- DROPDOWN TIPE PESANAN -->
+            <div class="form-group">
+                <label for="pilih-tipe">🍽️ Mau Pesan Apa?</label>
+                <select id="pilih-tipe">
+                    <option value="kombo">🍱🥤 Paket Kombo (Makanan + Minuman)</option>
+                    <option value="makanan">🍱 Hanya Makanan</option>
+                    <option value="minuman">🥤 Hanya Minuman / Es-Esan</option>
+                </select>
+            </div>
+
+            <!-- DROPDOWN JENIS MAKANAN -->
+            <div class="form-group" id="group-kategori-makanan">
+                <label for="pilih-kategori">🍲 Jenis Makanan:</label>
+                <select id="pilih-kategori">
+                    <option value="semua">🌈 Bebas (Makan Berat / Ringan)</option>
+                    <option value="berat">🍛 Makan Berat (Nasi/Ayam/Mie/Daging)</option>
+                    <option value="ringan">🍟 Camilan / Makan Ringan (Jajanan/Piscok/Batagor)</option>
+                </select>
+            </div>
+
+            <!-- DROPDOWN JENIS MINUMAN -->
+            <div class="form-group" id="group-kategori-minuman">
+                <label for="pilih-kategori-minuman">🥤 Jenis Minuman / Es:</label>
+                <select id="pilih-kategori-minuman">
+                    <option value="semua">🌈 Bebas (Semua Jenis Es & Minuman)</option>
+                    <option value="netral">🥤 Pendamping Makan (Es Teh, Jeruk, Teh Jus, Air Mineral)</option>
+                    <option value="topping">🍧 Minuman Bertekstur / Ada Isi (Es Kuwut, Boba, Alpukat Kocok, Es Doger)</option>
+                </select>
+            </div>
+
+            <!-- DROPDOWN RASA -->
+            <div class="form-group">
+                <label for="pilih-rasa">😋 Lagi Ngidam Rasa Apa?</label>
+                <select id="pilih-rasa">
+                    <option value="terserah">🤷 Terserah Deh! (Bebas)</option>
+                    <option value="pedas">🔥 Pengen yang Pedas</option>
+                    <option value="manis">🍩 Pengen yang Manis</option>
+                    <option value="asin">🧂 Pengen yang Asin / Gurih</option>
+                </select>
+            </div>
+
+            <!-- INPUT BUDGET -->
+            <div class="form-group">
+                <label for="input-budget">💵 Punya Budget Uang Berapa? (Rp):</label>
+                <input type="number" id="input-budget" placeholder="Masukkan angka, contoh: 20000" value="20000" min="2000">
+            </div>
+
+            <!-- TAMPILAN RODA / BOX -->
+            <div class="wheel-box">
+                <div id="wheel-display" class="wheel-text">❓</div>
+            </div>
+
+            <button type="button" id="btn-spin" class="btn-primary">🎲 PUTAR & CARI MENU!</button>
+            
+            <!-- RESULT DISPLAY -->
+            <div id="hasil-box" class="hasil-container" style="display: none;">
+                <pre id="hasil-text" class="hasil-text-formatted"></pre>
+            </div>
+        </section>
+
+        <!-- FITUR 2: MYSTERY DAILY CHALLENGE & SUPPORT JOURNAL -->
+        <section class="card challenge-card">
+            <h2>🎁 Mystery Challenge & Daily Journal</h2>
+            <p class="subtitle">Ambil tantangan harian, tulis jurnal singkat, dan kumpulkan poin hadiah!</p>
+            
+            <div class="challenge-box">
+                <div class="card-inner">
+                    <p id="challenge-text">Klik tombol di bawah untuk membuka tantangan misteri hari ini!</p>
+                </div>
+            </div>
+
+            <!-- FORM MINI DAILY JOURNAL -->
+            <div id="journal-box" style="display: none;" class="form-group">
+                <label for="input-journal">📝 Daily Journal & Curhatan Hari Ini:</label>
+                <textarea id="input-journal" rows="3" placeholder="Ceritakan singkat kegiatan, perasaan, atau pencapaian kecilmu hari ini..."></textarea>
+            </div>
+
+            <button type="button" id="btn-challenge" class="btn-success">✨ Buka Tantangan Hari Ini</button>
+            <button type="button" id="btn-complete" class="btn-complete" style="display: none;">✅ Simpan Jurnal & Dapatkan Support Boost (+1 Streak)</button>
+
+            <!-- PESAN MOTIVASI / SUPPORT BOOST (TAMPIL SETELAH SIMPAN) -->
+            <div id="support-message-box" class="support-box" style="display: none;">
+                <h4>💌 Support Boost Buat Kamu:</h4>
+                <p id="support-text"></p>
+            </div>
+
+            <!-- KOTAK RIWAYAT JURNAL -->
+            <div class="journal-history-section" style="margin-top: 20px; border-top: 2px dashed #013e37; padding-top: 15px;">
+                <button type="button" id="btn-toggle-journal" class="btn-secondary">📖 Lihat Riwayat Jurnal Saya</button>
+                <div id="journal-list" style="display: none; margin-top: 12px;"></div>
+            </div>
+
+            <!-- KOTAK HADIAH / REWARD SHOP -->
+            <div class="reward-box" style="margin-top: 15px; border-top: 2px dashed #013e37; padding-top: 15px;">
+                <h3 style="color: #013e37; font-size: 15px; margin-bottom: 6px;">🏆 Status Hadiah Kamu:</h3>
+                <p id="reward-status" style="font-size: 13px; font-weight: bold; color: #013e37;">Butuh 3 Streak untuk Klaim Voucher Jajan 🎟️</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
